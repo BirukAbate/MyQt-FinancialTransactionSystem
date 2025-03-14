@@ -71,13 +71,26 @@ void BankAppGUI::updateTransactionsList() {
 
 void BankAppGUI::onAddTransactionClicked() {
     bool ok;
+
+    // Nome transazione
     QString name = QInputDialog::getText(this, "Add Transaction", "Name:", QLineEdit::Normal, "", &ok);
     if (!ok || name.isEmpty()) return;
 
-    QString amountStr = QInputDialog::getText(this, "Add Transaction", "Amount:", QLineEdit::Normal, "", &ok);
-    if (!ok || amountStr.isEmpty()) return;
-    double amount = amountStr.toDouble();
+    // Selezione tipo transazione (Income o Expense)
+    QStringList types = {"Income (+)", "Expense (-)"};
+    QString type = QInputDialog::getItem(this, "Transaction Type", "Select type:", types, 0, false, &ok);
+    if (!ok) return;
 
+    // Importo transazione
+    double amount = QInputDialog::getDouble(this, "Add Transaction", "Amount:", 0, 0, 10000, 2, &ok);
+    if (!ok) return;
+
+    // Se il tipo è "Expense (-)", rendiamo l'importo negativo
+    if (type == "Expense (-)") {
+        amount = -amount;
+    }
+
+    // Data transazione
     QString date = QInputDialog::getText(this, "Add Transaction", "Date (YYYY-MM-DD):", QLineEdit::Normal, "", &ok);
     if (!ok || date.isEmpty()) return;
 
@@ -90,6 +103,7 @@ void BankAppGUI::onAddTransactionClicked() {
         QMessageBox::critical(this, "Error", e.what());
     }
 }
+
 
 void BankAppGUI::onDeleteTransactionClicked() {
     auto selectedItem = transactionsList->currentRow();
