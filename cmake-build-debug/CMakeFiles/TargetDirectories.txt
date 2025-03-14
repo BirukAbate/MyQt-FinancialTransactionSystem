@@ -1,0 +1,5 @@
+/Users/birukabate/CLionProjects/MyQt/cmake-build-debug/CMakeFiles/MyQt.dir
+/Users/birukabate/CLionProjects/MyQt/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/birukabate/CLionProjects/MyQt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/birukabate/CLionProjects/MyQt/cmake-build-debug/CMakeFiles/MyQt_autogen_timestamp_deps.dir
+/Users/birukabate/CLionProjects/MyQt/cmake-build-debug/CMakeFiles/MyQt_autogen.dir
